@@ -23,6 +23,8 @@ namespace WpfApp23Core
         public MainWindow()
         {
             InitializeComponent();
+
+            // test
         }
     }
 }
