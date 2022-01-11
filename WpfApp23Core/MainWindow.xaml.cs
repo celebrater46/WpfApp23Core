@@ -27,7 +27,6 @@ namespace WpfApp23Core
         private DispatcherTimer timer;
         private static readonly int notifyCount = 8;
         
-
         public MainWindow()
         {
             InitializeComponent();
@@ -35,17 +34,17 @@ namespace WpfApp23Core
             // test
         }
 
-        // private async void Button_Click(object sender, RoutedEventArgs e)
-        // {
-        //     var content = new NOTIFY.NotificationContent
-        //     {
-        //         Type = NOTIFY.NotificationType.Information,
-        //         Title = "Hoge Title",
-        //         Message = "Hello World of Hoge",
-        //     };
-        //
-        //     await notificationManager.ShowAsync(content, expirationTime: TimeSpan.FromSeconds(2));
-        // }
+        private async void Button_Click(object sender, RoutedEventArgs e)
+        {
+            var content = new NOTIFY.NotificationContent
+            {
+                Type = NOTIFY.NotificationType.Information,
+                Title = "Hoge Title",
+                Message = "Hello World of Hoge",
+            };
+        
+            await notificationManager.ShowAsync(content, expirationTime: TimeSpan.FromSeconds(2));
+        }
 
         private void DisplayTime_OnGotFocus(object sender, RoutedEventArgs e)
         {
@@ -69,6 +68,9 @@ namespace WpfApp23Core
                 timer.Interval = TimeSpan.FromMilliseconds(200);
                 timer.Tick += new EventHandler(OnTimer);
             }
+            
+            SetControlStatus(isRunning: true);
+            timer.Start();
         }
 
         private void OnTimer(object? sender, EventArgs e)
@@ -113,7 +115,15 @@ namespace WpfApp23Core
 
         private void CancelButton_OnClick(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            SetControlStatus(isRunning: false);
+            timer?.Stop();
+        }
+
+        private void MainWindow_OnLoaded(object sender, RoutedEventArgs e)
+        {
+            // displayTime.Text = DateTime.Now.AddMinutes(1).ToString("HHmm");
+            displayTime.Text = DateTime.Now.AddMinutes(10).ToString("HHmm");
+            displayTime.SelectAll();
         }
     }
 }

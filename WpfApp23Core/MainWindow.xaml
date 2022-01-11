@@ -5,20 +5,29 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp23Core"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="130" Width="250"
+        Loaded="MainWindow_OnLoaded">
+    <Window.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="Height" Value="30"/>
+            <Setter Property="Width" Value="60"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+        </Style>
+    </Window.Resources>
     <Grid>
         <!-- <Button Content="Button" HorizontalAlignment="Center" Margin="0,69,0,0" VerticalAlignment="Top" Height="290" Width="654" Click="Button_Click"/> -->
         <StackPanel>
             <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Wait until..." VerticalAlignment="Center" Margin="10"/>
                 <TextBox 
                     x:Name="displayTime" 
                     Text="0000" 
                     MaxLength="4" 
                     InputMethod.IsInputMethodEnabled="False" 
                     Margin="10,10,0,10" 
-                    FontFamily="Meiryo" FontSize="16" 
+                    FontFamily="Meiryo" FontSize="16" Width="50" 
                     GotFocus="DisplayTime_OnGotFocus"/>
-                <TextBlock Text="Wait until..." VerticalAlignment="Center"/>
             </StackPanel>
             
             <StackPanel Orientation="Horizontal">
@@ -31,6 +40,8 @@
                         IsCancel="True" 
                         IsEnabled="False" 
                         Click="CancelButton_OnClick"/>
+                <Button Content="Test" 
+                        VerticalAlignment="Top" Click="Button_Click"/>
             </StackPanel>
         </StackPanel>
     </Grid>
