@@ -7,7 +7,31 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <Button Content="Button" HorizontalAlignment="Center" Margin="0,69,0,0" VerticalAlignment="Top" Height="290" Width="654" Click="Button_Click"/>
-
+        <!-- <Button Content="Button" HorizontalAlignment="Center" Margin="0,69,0,0" VerticalAlignment="Top" Height="290" Width="654" Click="Button_Click"/> -->
+        <StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBox 
+                    x:Name="displayTime" 
+                    Text="0000" 
+                    MaxLength="4" 
+                    InputMethod.IsInputMethodEnabled="False" 
+                    Margin="10,10,0,10" 
+                    FontFamily="Meiryo" FontSize="16" 
+                    GotFocus="DisplayTime_OnGotFocus"/>
+                <TextBlock Text="Wait until..." VerticalAlignment="Center"/>
+            </StackPanel>
+            
+            <StackPanel Orientation="Horizontal">
+                <Button x:Name="startButton" 
+                        Content="Start" 
+                        IsDefault="True" 
+                        Click="StartButton_OnClick"/>
+                <Button x:Name="cancelButton" 
+                        Content="Cancel" 
+                        IsCancel="True" 
+                        IsEnabled="False" 
+                        Click="CancelButton_OnClick"/>
+            </StackPanel>
+        </StackPanel>
     </Grid>
 </Window>
